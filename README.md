@@ -40,9 +40,3 @@ In German Conference on Pattern Recognition (GCPR 2014), Münster, Germany, Sept
 
 ## License
 Check [Middleburry dataset](http://vision.middlebury.edu/stereo/data/) - License
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
