@@ -1,0 +1,4 @@
+http://vision.middlebury.edu/stereo/data/scenes2014/zip/Adirondack-perfect.zip
+http://vision.middlebury.edu/stereo/data/scenes2014/zip/Backpack-perfect.zip
+http://vision.middlebury.edu/stereo/data/scenes2014/zip/Bicycle1-perfect.zip
+http://vision.middlebury.edu/stereo/data/scenes2014/zip/Cable-perfect.zip
