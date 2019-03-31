@@ -26,11 +26,11 @@ zip_names = glob.glob('*.zip')
 
 for filename in zip_names:
 	os.system('unzip ' + filename) # unzipping
-	#os.system('rm ' + filename) # removing zip file to save space
+	os.system('rm ' + filename) # removing zip file to save space
 
 # Converting PFM to PNG 
 filenames = glob.glob('*-perfect') # All unzip filenames
-print(filenames)
+print('PFM to PNG conversion ...')
 for filename in filenames:
 
 	# Removing -sd.pfm since I am not interested in those
@@ -65,9 +65,11 @@ for filename in filenames:
 	for png_depth_file, png_im_file  in zip(png_depth_files, png_im_files):
 		# Adding depth file
 		depth = cv2.imread(png_depth_file, 0) # read as gray img
+		depth = depth / 255.0  # normalizing
 		depth_imgs.append(depth)
 		# Adding im file as gray
 		im = cv2.imread(png_im_file, 0) # read as gray image
+		im = im / 255.0 # normalizing
 		gray_imgs.append(im)
 
 # File lists are ready, let's save them into a pickle
