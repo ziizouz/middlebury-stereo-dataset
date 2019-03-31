@@ -24,3 +24,17 @@ zip_names = glob.glob('*.zip')
 for filename in zip_names:
 	os.system('unzip ' + filename) # unzipping
 	os.system('rm ' + filename) # removing zip file to save space
+
+# Converting PFM to PNG 
+filenames = glob.glob('*-perfect') # All unzip filenames
+
+for filename in filenames:
+	pfm_files = glob.glob(filename + '/*.pfm')
+	for pfm_file in pfm_files:
+		png_filename = pfm_file[:-4] # removing .pfm to be replaced by PNG
+		os.system('convert ' + pfm_file + ' ' + png_filename + '.png')
+		os.system('rm ' + pfm_file)
+	# removing pgm files since I am not interested in those
+	pgm_files = glob.glob(filename + '/*.pgm')
+	for pgm_file in pgm_files:
+		os.system('rm ' + pgm_file)
