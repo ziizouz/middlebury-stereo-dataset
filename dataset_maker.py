@@ -16,6 +16,8 @@ with open(links_file_name, 'r') as links_file:
 		print(link)
 		# download file 
 		ret = os.system('wget -c ' + link)
+		if ret == 0:
+			link = links_file.readline()
 
 # unzipping all downloaded file
 # Getting all filenames
@@ -29,12 +31,20 @@ for filename in zip_names:
 filenames = glob.glob('*-perfect') # All unzip filenames
 
 for filename in filenames:
+	# Removing -sd.pfm since I am not interested in those
+	sd_pfm_files = glob.glob(filename + '/*-sd.pfm')
+	for sd_pfm_file in sd_pfm_files:
+		os.system('rm ' + sd_pfm_file)
+
+	# Converting PFM to PNG
 	pfm_files = glob.glob(filename + '/*.pfm')
 	for pfm_file in pfm_files:
 		png_filename = pfm_file[:-4] # removing .pfm to be replaced by PNG
 		os.system('convert ' + pfm_file + ' ' + png_filename + '.png')
 		os.system('rm ' + pfm_file)
+
 	# removing pgm files since I am not interested in those
 	pgm_files = glob.glob(filename + '/*.pgm')
 	for pgm_file in pgm_files:
 		os.system('rm ' + pgm_file)
+
